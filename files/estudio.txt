@@ -1,0 +1,61 @@
+https://msfthub.com/vouchers/virtualtrainingdays/?utm_source=chatgpt.com
+
+1. SC-900 – Security, Compliance, and Identity Fundamentals
+
+👉 Recomendación #1 para ti.
+
+🔹 Combina perfecto con:
+
+Tu curso de ciberseguridad
+
+Tu base de redes (CCNA)
+
+Azure (seguridad en la nube)
+
+🔹 Te abre camino a certificaciones más avanzadas como:
+
+SC-200 (SOC Analyst)
+
+SC-300 (Identity)
+
+🥈 2. DP-900 – Azure Data Fundamentals
+
+👉 Muy alineado con tu curso de Data Analyst.
+
+🔹 Te refuerza:
+
+Datos en Azure
+
+SQL, NoSQL, analítica básica en la nube
+
+🔹 Ideal si te interesa:
+
+Data Engineer
+
+Data Analyst en Azure
+
+Power BI más adelante
+
+🥉 3. AI-900 – Azure AI Fundamentals
+
+👉 Súper útil si quieres complementar con inteligencia artificial.
+
+🔹 Te sirve si te interesa:
+
+Automatización
+
+Machine Learning básico
+
+IA en la nube (Azure AI)
+
+🚀 Certificaciones más avanzadas (cuando estés listo)
+
+Después de una de esas tres, podrías apuntar a:
+
+🔐 SC-200 – Security Operations Analyst Associate
+
+Si te gusta seguridad → esta es clave para SOC / Blue Team.
+
+🤖 AI-102 – Azure AI Engineer Associate
+
+Si te gusta IA → esta te vuelve perfil técnico fuerte en AI cloud.

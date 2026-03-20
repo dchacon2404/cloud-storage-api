@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloud File Upload</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #0078D4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #005ea6;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Subir archivo ☁️</h2>
+    <input type="file" id="fileInput">
+    <br>
+    <button onclick="upload()">Subir</button>
+    <p id="result" style="margin-top:10px; font-weight:bold;"></p>
+</div>
+
+<div class="container">
+    <h3>Archivos subidos:</h3>
+    <ul id="fileList"></ul>
+</div>
+
+<script>
+async function upload() {
+    const fileInput = document.getElementById("fileInput");
+    const result = document.getElementById("result");
+
+    if (!fileInput.files.length) {
+        result.innerText = "⚠️ Selecciona un archivo primero";
+        return;
+    }
+
+    const file = fileInput.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+        result.innerText = "⏳ Subiendo archivo...";
+
+        const res = await fetch("http://127.0.0.1:8000/upload/", {
+            method: "POST",
+            body: formData
+        });
+
+        if (!res.ok) throw new Error("Error en la subida");
+
+        const data = await res.json();
+        result.innerText = `✅ Archivo "${data.filename}" subido correctamente`;
+
+        fileInput.value = "";
+        loadFiles();
+
+    } catch (error) {
+        result.innerText = "❌ Error al subir el archivo";
+        console.error(error);
+    }
+}
+
+async function loadFiles() {
+    const list = document.getElementById("fileList");
+
+    try {
+        const res = await fetch("http://127.0.0.1:8000/files/");
+        const data = await res.json();
+
+        list.innerHTML = "";
+        data.files.forEach(file => {
+            const li = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = file.url;
+            link.innerText = file.name;
+            link.target = "_blank";
+            li.appendChild(link);
+            list.appendChild(li);
+        });
+
+    } catch (error) {
+        console.error("Error al cargar archivos:", error);
+    }
+}
+
+// Cargar archivos al iniciar
+loadFiles();
+</script>
+
+</body>
+</html>
